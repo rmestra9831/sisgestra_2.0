@@ -1,0 +1,4 @@
+.ui.upload_finding.input input[type=file] {
+  display: none;
+}
+

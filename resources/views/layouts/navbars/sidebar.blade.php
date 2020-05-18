@@ -20,7 +20,7 @@
       </li>
       {{-- nuevo hallazgo --}}
       <li class="nav-item{{ $activePage == 'new-finding' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('indexFindings') }}">
+        <a id="newFinding" class="nav-link" href="{{ route('indexFindings') }}">
           <i class="material-icons">library_add</i>
             <p>{{ __('Nuevo Hallazgo') }}</p>
         </a>

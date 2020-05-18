@@ -37,6 +37,7 @@
         {{-- configuracion de ajustes --}}
         <!--   Core JS Files   -->
         <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+        <script src="{{ asset('js/imports.js') }}"></script>
         {{-- <script src="{{ asset('material') }}/js/core/jquery.min.js"></script> --}}
         <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('material') }}/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>

@@ -14,7 +14,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-12 text-right">
-                  <a href="#" class="btn btn-sm btn-info">Nuevo Usuario</a>
+                  {{-- <a href="#" class="btn btn-sm btn-info">Nuevo Usuario</a> --}}
+                  
                 </div>
               </div>
               <div class="">
@@ -31,6 +32,7 @@
                           <td class="font-weight-bold">Finalización de Auditoria</td>
                           <td class="font-weight-bold">Fecha de los Hallazgos</td>
                           <td class="font-weight-bold">Fecha de Translados</td>
+                          <td class="font-weight-bold">Feca de Registro</td>
                           <td class="font-weight-bold">Acciones</td>
                       </tr>
                   </thead>
@@ -45,6 +47,7 @@
                       <th>Finalización de Auditoria</th>
                       <th>Fecha de los Hallazgos</th>
                       <th>Fecha de Translados</th>
+                      <th>Feca de Registro</th>
                       <th class="text-right">Acciones</th>
                   </tfoot>
               </table>

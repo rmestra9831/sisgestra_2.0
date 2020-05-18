@@ -19,6 +19,7 @@ class FilterController extends Controller
         ->addColumn('dateEndAudit', function($data){ return $data->dateEndAudit.' (Días)';})
         ->addColumn('timeFindings', function($data){ return $data->timeFindings;})
         ->addColumn('dateTransfers', function($data){ return $data->dateTransfers;})
+        ->addColumn('created_at', function($data){ return $data->created_at;})
         ->addColumn('actions', 'buttom.btnTableFinding')
         ->rawColumns(['actions'])
         ->toJson();

@@ -19,7 +19,7 @@
                 </div>
               </div>
               <div class="">
-                <table id="tableFindings" class="table">
+                <table id="tableFindings" class=" table">
                   <thead>
                       <tr>
                           <td class="font-weight-bold"># Memorando</td>

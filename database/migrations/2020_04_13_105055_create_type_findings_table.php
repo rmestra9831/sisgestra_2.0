@@ -14,10 +14,12 @@ class CreateTypeFindingsTable extends Migration
     public function up()
     {
         Schema::create('type_findings', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->integer('count');
+            $table->string('slug')->unique();
             $table->timestamps();
+
         });
     }
 

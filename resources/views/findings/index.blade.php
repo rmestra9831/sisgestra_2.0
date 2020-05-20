@@ -136,6 +136,7 @@
     </div>
   </div>
 </div>
+<script src="{{ asset('js/tableScripts.js') }}"></script>
 @include('common.ModalConfirm')
 
 @section('scripts')

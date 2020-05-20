@@ -22,27 +22,28 @@ class HallazgoController extends Controller
 
         $hallazgo = new Hallazgo();
 
-        $hallazgo->auditGroup = $request->auditGroup;
+        $hallazgo->auditGroup_id = $request->auditGroup;
         $hallazgo->dateEndAudit = $request->dateEndAudit;
         $hallazgo->dateTransfers = $request->dateTransfers;
         $hallazgo->memorandum = $request->memorandum;
-        $hallazgo->leaderAudit = auth()->user()->id;
+        $hallazgo->leaderAudit_id = auth()->user()->id;
         $hallazgo->responsibles = $request->responsibles;
         $hallazgo->timeFindings = $request->timeFindings;
         $hallazgo->validityAudit = $request->validityAudit;
         $hallazgo->valueFindings = str_replace(',','',$request->valueFindings);
-        $hallazgo->typeFinding = $request->typeFinding;
+        $hallazgo->typeFinding_id = $request->typeFinding;
         $hallazgo->file = $request->file('uploadFinding')->storeAs('public/fingins','hallazgo'.$request->memorandum.'.pdf');
         $hallazgo->save();
 
         return redirect()->route('indexFindings')->with('status','Creado');
-
-        dd('listo');
     }
     public function TypeFindings(){
         $findings = Hallazgo::get();
-        // dd($findings);
+        // dd($findings->typesFind->name);
         return view('pages.masterFinding', compact('findings'));
 
+    }
+    public function editFinding($slug){
+        dd($slug);
     }
 }

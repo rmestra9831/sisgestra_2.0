@@ -20,6 +20,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <link href="{{ asset('css/jquery-confirm.css') }}" rel="stylesheet">
     <!-- Js Files -->
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css"/> --}}
+  
     <!-- CSS Just for demo purpose, don't include it in your project -->
     {{-- <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" /> --}}
     </head>
@@ -37,7 +39,7 @@
         {{-- configuracion de ajustes --}}
         <!--   Core JS Files   -->
         <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
-        <script src="{{ asset('js/imports.js') }}"></script>
+
         {{-- <script src="{{ asset('material') }}/js/core/jquery.min.js"></script> --}}
         <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('material') }}/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>

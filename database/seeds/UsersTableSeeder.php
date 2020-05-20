@@ -18,6 +18,34 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@material.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
+            'slug'=>'UserAdmin',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Audit_1',
+            'email' => 'audit1@material.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('123456789'),
+            'slug'=>'UserAudit_1',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Audit_2',
+            'email' => 'audit2@material.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('123456789'),
+            'slug'=>'UserAudit_2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Audit_3',
+            'email' => 'audit3@material.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('123456789'),
+            'slug'=>'UserAudit_3',
             'created_at' => now(),
             'updated_at' => now()
         ]);

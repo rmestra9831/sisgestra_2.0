@@ -10,9 +10,9 @@ class FilterController extends Controller
     public function getFindings(){
         return datatables()->eloquent(Hallazgo::query())
         ->addColumn('memorandum', function($data){ return $data->memorandum; })
-        ->addColumn('leaderAudit', function($data){ return $data->leaderAudit;})
-        ->addColumn('auditGroup', function($data){ return $data->auditGroup;})
-        ->addColumn('typeFinding', function($data){ return $data->typeFinding;})
+        ->addColumn('leaderAudit_id', function($data){ return $data->leaderAudit->name;})
+        ->addColumn('auditGroup_id', function($data){ return $data->groupAudit->name;})
+        ->addColumn('typeFinding_id', function($data){ return $data->typesFind->name;})
         ->addColumn('responsibles', function($data){ return $data->responsibles;})
         ->addColumn('valueFindings', function($data){ return $data->valueFindings;})
         ->addColumn('validityAudit', function($data){ return $data->validityAudit.' (Días)';})

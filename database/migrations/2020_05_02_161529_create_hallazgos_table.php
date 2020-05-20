@@ -14,19 +14,25 @@ class CreateHallazgosTable extends Migration
     public function up()
     {
         Schema::create('hallazgos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('memorandum');
-            $table->integer('leaderAudit');
-            $table->integer('auditGroup');
+            $table->integer('leaderAudit_id')->unsigned();
+            $table->integer('auditGroup_id')->unsigned();
             $table->string('responsibles');
             $table->string('timeFindings');
             $table->string('dateTransfers');
             $table->integer('validityAudit');
             $table->integer('dateEndAudit');
             $table->integer('valueFindings');
-            $table->integer('typeFinding');
-            $table->string('file');
+            $table->integer('typeFinding_id')->unsigned();
+            $table->string('file')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
+
+            //relaciones
+            $table->foreign('typeFinding_id')->references('id')->on('type_findings')->onDelete('cascade');
+            $table->foreign('auditGroup_id')->references('id')->on('audit_groups')->onDelete('cascade');
+            $table->foreign('leaderAudit_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

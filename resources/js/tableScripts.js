@@ -16,13 +16,12 @@ var configLanguageDatatable = {
   "infoFiltered": "",
 };
 //TABLA DE FILTRADO GENERAL -------------------------------------------------------------------
-var date=new Date();
-var dateReport=date.getDate()+"_"+(date.getMonth()+1)+"_"+date.getFullYear();
 var tableFilterGeneral = $('#tableFindings').DataTable({
   "deferRender": true,
   "serverSide": false,
   "scroller": true,
   "scrollX": true,
+  "scrollY": "250px",
   "dom": 'Blfrtip',
   "ajax": {
     "type": "GET",
@@ -64,7 +63,7 @@ var tableFilterGeneral = $('#tableFindings').DataTable({
             // var min = new Date($('input[name="min"]').val()); 
             // var max = new Date($('input[name="max').val()); 
             var dataFilter = new Date(data[10]) || 0; // use data for the dataFilter column
-            // console.log(min,dataFilter, max);
+            // console.log(min);
             
               if ( ( isNaN( min ) && isNaN( max ) ) ||
                    ( isNaN( min ) && dataFilter <= max ) ||
@@ -85,9 +84,9 @@ var tableFilterGeneral = $('#tableFindings').DataTable({
   }, //traigo los usuarios para mirar sus permisos
   "columns": [
       {data: 'memorandum'},
-      {data: 'leaderAudit'},
-      {data: 'auditGroup'},
-      {data: 'typeFinding'},
+      {data: 'leaderAudit_id'},
+      {data: 'auditGroup_id'},
+      {data: 'typeFinding_id'},
       {data: 'responsibles'},
       {data: 'valueFindings'},
       {data: 'validityAudit'},
@@ -100,7 +99,7 @@ var tableFilterGeneral = $('#tableFindings').DataTable({
   "language": configLanguageDatatable,
   "buttons": [ 
     {
-      extend: 'excel',
+      extend: 'excelHtml5',
       text: 'Excel',
       className: 'btn btn-info'
     },
@@ -110,21 +109,21 @@ var tableFilterGeneral = $('#tableFindings').DataTable({
         $(location).attr('href', $('#newFinding').attr('href'));
       },
       className: 'btn btn-info'
-    }
+    },
   ]
 });
 
 // Display the buttons tabla filtrado general
-new $.fn.dataTable.Buttons( tableFilterGeneral, [
-  { extend: 'excelHtml5', exportOptions: {columns: ':visible'}},
-  { extend: 'pdfHtml5',exportOptions: {columns:  ':visible'},orientation: 'landscape', pageSize: 'LEGAL'},
-  { extend: 'print',text: 'Imprimir' ,messageBottom: null,exportOptions: {columns:  ':visible'}},
-  { extend: "colvis",text: 'Mostrar columnas'}
-] );
+// new $.fn.dataTable.Buttons( tableFilterGeneral, [
+//   { extend: 'excelHtml5', exportOptions: {columns: ':visible'}},
+//   { extend: 'pdfHtml5',exportOptions: {columns:  ':visible'},orientation: 'landscape', pageSize: 'LEGAL'},
+//   { extend: 'print',text: 'Imprimir' ,messageBottom: null,exportOptions: {columns:  ':visible'}},
+//   { extend: "colvis",text: 'Mostrar columnas'}
+// ] );
 
-if (window.location.pathname == '/findings/TypeFindings') {
+// if (window.location.pathname == '/findings/TypeFindings') {
 
-}
+// }
 $('#tableFindings tfoot th').each( function () { //BUSCADOR POR CAMPOS
   $('.ttt th').html('<div class="ui input"><input type="text" placeholder="Buscar por..."></div>');
 });

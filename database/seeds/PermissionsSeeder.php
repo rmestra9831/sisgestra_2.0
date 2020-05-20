@@ -14,6 +14,8 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
+        $permission = Permission::create(['name' => 'view register']);
+        
         $permission = Permission::create(['name' => 'create register']);
         $permission = Permission::create(['name' => 'create user']);
 
@@ -24,6 +26,9 @@ class PermissionsSeeder extends Seeder
         $permission = Permission::create(['name' => 'delete user']);
     
         $user = User::where('id',1)->first();
-        $user->givePermissionTo(['create register','create user','delete user']);
+        $user->givePermissionTo(['create register','edit register','delete register','create user','delete user','view register']);
+    
+        $user = User::where('id',2)->first();
+        $user->givePermissionTo(['create register','view register']);
     }
 }

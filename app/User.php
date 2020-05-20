@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
-
+use App\Models\Hallazgo;
 class User extends Authenticatable
 {
     use Notifiable, HasRoles;
@@ -39,4 +39,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function finding()
+    {
+        return $this->hasMany(Hallazgo::class);
+    }
 }

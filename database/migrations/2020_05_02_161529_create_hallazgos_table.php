@@ -23,10 +23,11 @@ class CreateHallazgosTable extends Migration
             $table->string('dateTransfers');
             $table->integer('validityAudit');
             $table->integer('dateEndAudit');
-            $table->integer('valueFindings');
+            $table->bigInteger('valueFindings');
             $table->integer('typeFinding_id')->unsigned();
             $table->string('file')->nullable();
             $table->string('slug')->unique();
+            $table->softDeletes();
             $table->timestamps();
 
             //relaciones

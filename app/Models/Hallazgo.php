@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\TypeFinding;
 use App\User;
 
 class Hallazgo extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'auditGroup_id','dateEndAudit','dateTransfers','memorandum','leaderAudit_id','responsibles','timeFindings','validityAudit','valueFindings','uploadFinding','typeFinding_id'
     ];

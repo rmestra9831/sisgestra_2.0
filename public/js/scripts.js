@@ -104165,9 +104165,7 @@ $(document).ready(function () {
     },
     "keyup": function keyup(event) {
       $(event.target).val(function (index, value) {
-        return value.replace(/\D/g, "") // .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-        // .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
       });
     }
   }); // <!-- CALENDARIOS  -->
@@ -104227,6 +104225,40 @@ $(document).ready(function () {
         var month = _date2.getMonth() + 1;
 
         var year = _date2.getFullYear();
+
+        return day + '/' + month + '/' + year;
+      }
+    },
+    onSuccess: function onSuccess(event) {}
+  }); //VALIDANDO FORMULARIO PARA ACTUALIZAR INFORMACIÓN
+
+  $form_create_radic = $('#EditAuditForm');
+  $('.ui.create_audit.form') //validacion creacion de radicado
+  .form({
+    inline: true,
+    fields: {
+      responsibles: 'empty',
+      valueFindings: ['empty'],
+      timeFindings: 'empty',
+      memorandum: 'empty',
+      leaderAudit: 'empty',
+      validityAudit: ['empty', 'number', 'maxLength[4]'],
+      dateTransfers: 'empty',
+      auditGroup: 'empty',
+      typeFinding: 'empty',
+      uploadFinding: 'empty',
+      dateEndAudit: ['empty', 'number', 'maxLength[4]']
+    },
+    dateHandling: 'formatter',
+    formatter: {
+      date: function date(_date3, settings) {
+        if (!_date3) return '';
+
+        var day = _date3.getDate();
+
+        var month = _date3.getMonth() + 1;
+
+        var year = _date3.getFullYear();
 
         return day + '/' + month + '/' + year;
       }

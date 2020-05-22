@@ -39,8 +39,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function finding()
-    {
-        return $this->hasMany(Hallazgo::class);
-    }
 }

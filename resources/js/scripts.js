@@ -23,8 +23,6 @@ $(document).ready(function () {
     "keyup": function (event) {
         $(event.target).val(function (index, value ) {
             return value.replace(/\D/g, "")
-            // .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-            // .replace(/([0-9])([0-9]{2})$/, '$1.$2')
             .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
         });
     }
@@ -84,6 +82,38 @@ $('.ui.create_audit.form') //validacion creacion de radicado
     
     }
 });
+//VALIDANDO FORMULARIO PARA ACTUALIZAR INFORMACIÓN
+$form_create_radic = $('#EditAuditForm');
+$('.ui.create_audit.form') //validacion creacion de radicado
+  .form({
+    inline : true,
+    fields: {
+      responsibles      : 'empty',
+      valueFindings     : ['empty'],
+      timeFindings      : 'empty',
+      memorandum        : 'empty',
+      leaderAudit       : 'empty',
+      validityAudit     : ['empty','number','maxLength[4]'],
+      dateTransfers     : 'empty',
+      auditGroup        : 'empty',
+      typeFinding        : 'empty',
+      uploadFinding     : 'empty',
+      dateEndAudit      : ['empty','number','maxLength[4]'],
+    },
+    dateHandling: 'formatter',  
+    formatter: {
+      date: function (date, settings) {
+        if (!date) return '';
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        return day + '/' + month + '/' + year;
+      }
+    },onSuccess: function (event){
+    
+    }
+});
+
 // MODAL PARA CONFIRMAR LA CREACION DE UN RADICADO
 $('.ui.basic.create_finding.modal')
   .modal({
@@ -106,6 +136,5 @@ $('input:file', '.ui.upload_finding.input')
       var name = e.target.files[0].name;
       $('input:text', $(e.target).parent()).val(name);  //validando el boton de carga del archivo
 });
-
 
 });

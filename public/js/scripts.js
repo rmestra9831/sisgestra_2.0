@@ -104151,6 +104151,12 @@ $(document).ready(function () {
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
+  }); //validación para activar usuario
+
+  btnsActive = document.querySelectorAll('#activeUser');
+  $(btnsActive).click(function () {
+    if ($(this).is(':checked')) {// return confirm('das');
+    } else {}
   }); // <!-- Validación para inputs numericos -->
   //SOLO NUMEROS
 

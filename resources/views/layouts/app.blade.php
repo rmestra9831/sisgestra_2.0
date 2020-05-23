@@ -19,6 +19,13 @@
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <link href="{{ asset('css/jquery-confirm.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <!-- Js Files -->
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css"/> --}}
   
@@ -87,7 +94,7 @@
         <script src="{{ asset('material') }}/js/settings.js"></script>
         <script src="https://kit.fontawesome.com/0892879507.js" crossorigin="anonymous"></script>
         {{-- mis scipts --}}
-        <script src="{{ asset('js/scripts.js') }}"></script>
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>        <script src="{{ asset('js/scripts.js') }}"></script>
         <script src="{{ asset('js/tableScripts.js') }}"></script>
         @yield('scripts')
         @stack('js')

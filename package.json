@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@material-ui/core": "^4.9.14",
+        "alertifyjs": "^1.13.1",
         "datatables.net-buttons-dt": "^1.6.2",
         "datatables.net-buttons-se": "^1.6.2",
         "datatables.net-dt": "^1.10.21",

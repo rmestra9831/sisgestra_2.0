@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
+use App\User;
+use App\Models\Position;
 
 class ProfileController extends Controller
 {
@@ -17,6 +20,12 @@ class ProfileController extends Controller
     {
         return view('profile.edit');
     }
+    public function editUser($slug)
+    {
+        $positions = Position::get();
+        $user = User::where('slug',$slug)->firstOrFail();
+        return view('profile.editUser', compact(['user','positions']));
+    }
 
     /**
      * Update the profile
@@ -27,6 +36,13 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         auth()->user()->update($request->all());
+
+        return back()->withStatus(__('Profile successfully updated.'));
+    }
+    public function updateUser(Request $request, $slug)
+    {
+        $user = User::where('slug',$slug)->firstOrFail();
+        $user->update($request->all());
 
         return back()->withStatus(__('Profile successfully updated.'));
     }

@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
     }
     public function mapHallazgosRoutes(){
         Route::prefix('findings')
-            ->middleware('web')
+            ->middleware(['web','isActive'])
             ->namespace($this->namespace)
             ->group(base_path('routes/hallazgos/hallazgos.php'));
     }

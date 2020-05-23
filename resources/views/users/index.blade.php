@@ -14,7 +14,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-12 text-right">
-                  <a href="#" class="btn btn-sm btn-info">Nuevo Usuario</a>
+                  <a href="{{ route('register') }}" class="btn btn-sm btn-info">Nuevo Usuario</a>
                 </div>
               </div>
               <div class="table-responsive">
@@ -24,7 +24,8 @@
                       <th>Nombre</th>
                       <th>Email</th>
                       <th>Cargo</th>
-                      <th> Fecha de creación</th>
+                      <th>Fecha de creación</th>
+                      <th>Activo</th>
                       <th class="text-right">Acciones</th>
                     </tr>
                   </thead>
@@ -35,10 +36,18 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->positionUser->name }}</td>
                         <td>{{ $user->created_at }}</td>
+                        <td>
+                          <div class="togglebutton">
+                            <label>
+                              <input id="activeUser" type="checkbox" @if($user->active == 1) value="{{ $user->id }}" checked @endif name="isActive">
+                                <span class="toggle"></span>
+                            </label>
+                          </div>
+                        </td>
                         <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" class="btn btn-success  btn-round">
+                        <a href="{{ route('profileUser.edit',$user->slug) }}" type="button" rel="tooltip" class="btn btn-success  btn-round">
                             <i class="material-icons">edit</i>
-                        </button>
+                        </a>
                         @can('delete user')
                           <button type="button" rel="tooltip" class="btn btn-danger btn-round">
                             <i class="material-icons">close</i>

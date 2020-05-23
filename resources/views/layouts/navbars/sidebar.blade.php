@@ -70,7 +70,7 @@
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse{{ ($activePage == 'Findings' || $activePage == 'user-management') ? ' show' : '' }}" id="hallazgos">
+        <div class="collapse{{ ($activePage == 'Findings') ? ' show' : '' }}" id="hallazgos">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'Findings' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('TypeFindings') }}">

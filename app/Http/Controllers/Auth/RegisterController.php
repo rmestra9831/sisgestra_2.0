@@ -5,12 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Models\Position;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','can:create user','isActive']);
+    }
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -31,15 +36,16 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    public function showRegistrationForm()
+    {
+        $positions = Position::get();
+        return view('auth.register', compact('positions'));
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware(['auth','can:create user']);
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -68,7 +74,9 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'position_id' => $data['position'],
             'password' => Hash::make($data['password']),
+            'slug' => $data['name'],$data['position'],
         ]);
     }
 }

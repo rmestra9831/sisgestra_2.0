@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('secret'),
             'slug'=>'UserAdmin',
             'position_id' => 1,
+            'active' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('123456789'),
             'slug'=>'UserAudit_1',
             'position_id' => 2,
+            'active' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -40,6 +42,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('123456789'),
             'slug'=>'UserAudit_2',
             'position_id' => 2,
+            'active' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -50,6 +53,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('123456789'),
             'slug'=>'UserAudit_3',
             'position_id' => 2,
+            'active' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);

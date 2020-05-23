@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeFindingsTable extends Migration
+class CreatePositionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTypeFindingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_findings', function (Blueprint $table) {
+        Schema::create('positions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('count');
-            $table->string('slug')->unique();
+            $table->string('description')->nullable();
             $table->timestamps();
-            //relaciones
         });
     }
 
@@ -30,6 +28,6 @@ class CreateTypeFindingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_findings');
+        Schema::dropIfExists('positions');
     }
 }

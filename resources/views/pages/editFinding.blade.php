@@ -118,7 +118,7 @@
 
                   </div>
 
-                  <div class="create_audit btn btn-info w-100">Crear</div>
+                  <div class="create_audit btn btn-info w-100">Editar</div>
                 </div>
               </form>
             </div>

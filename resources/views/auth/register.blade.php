@@ -1,29 +1,18 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'register', 'title' => __('Material Dashboard')])
-
+@extends('layouts.app',['activePage' => 'register', 'titlePage' => __('Nuevo Usuario'),'title'=>'asd'])
+@section('title',' | Editar Usuario')
 @section('content')
-<div class="container" style="height: auto;">
+<div class="content">
   <div class="row align-items-center">
-    <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+    <div class="col-lg-11 col-md-6 col-sm-8 ml-auto mr-auto">
       <form class="form" method="POST" action="{{ route('register') }}">
         @csrf
 
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-info text-center">
-            <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
-            <div class="social-line">
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-facebook-square"></i>
-              </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-google-plus"></i>
-              </a>
-            </div>
+            <h4 class="card-title"><strong>{{ __('Registrar') }}</strong></h4>
           </div>
           <div class="card-body ">
-            <p class="card-description text-center">{{ __('Or Be Classical') }}</p>
+            <p class="card-description text-center">{{ __('Todos los datos son requeridos') }}</p>
             <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -39,6 +28,7 @@
                 </div>
               @endif
             </div>
+
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -54,6 +44,26 @@
                 </div>
               @endif
             </div>
+
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+
+            </div>
+            {{-- <div class="bmd-form-group{{ $errors->has('position') ? ' has-danger' : '' }} mt-3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons">email</i>
+                  </span>
+                </div>
+                <input type="" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
+              </div>
+              @if ($errors->has('email'))
+                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
+                  <strong>{{ $errors->first('email') }}</strong>
+                </div>
+              @endif
+            </div> --}}
+
             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -69,6 +79,7 @@
                 </div>
               @endif
             </div>
+
             <div class="bmd-form-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -90,12 +101,12 @@
                 <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
-                {{ __('I agree with the ') }} <a href="#">{{ __('Privacy Policy') }}</a>
+                {{ __('Acepto los') }} <a href="#">{{ __('Terminos y condiciones') }}</a>
               </label>
             </div>
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-info btn-link btn-lg">{{ __('Create account') }}</button>
+            <button type="submit" class="btn btn-info btn-link btn-lg">{{ __('Crear') }}</button>
           </div>
         </div>
       </form>

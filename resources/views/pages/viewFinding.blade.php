@@ -116,7 +116,7 @@
                     </div>
 
                   </div>
-                  @if ($finding->leaderAudit->id == auth()->user()->id)
+                  @if ($finding->leaderAudit->id == auth()->user()->id || auth()->user()->hasPermissionTo('edit register'))
                     <a href="{{ route('editFindingView',$finding->slug) }}" class="create_audit btn btn-info w-100">Editar Hallazgo</a>
                   @endif
                 </div>

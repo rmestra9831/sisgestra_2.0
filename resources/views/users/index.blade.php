@@ -33,7 +33,7 @@
                       <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>cargo</td>
+                        <td>{{ $user->positionUser->name }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td class="td-actions text-right">
                         <button type="button" rel="tooltip" class="btn btn-success  btn-round">

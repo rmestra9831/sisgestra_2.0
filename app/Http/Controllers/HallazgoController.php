@@ -59,7 +59,7 @@ class HallazgoController extends Controller
         $typeFinding = TypeFinding::get();
         $auditGroup  = AuditGroup::get();
         $finding = Hallazgo::where('slug',$slug)->first();
-        if ($finding->leaderAudit->id == auth()->user()->id) {
+        if ($finding->leaderAudit->id == auth()->user()->id || auth()->user()->hasPermissionTo('edit register')) {
             $finding->update([
                 'auditGroup_id' => $request->auditGroup,
                 'dateEndAudit' => $request->dateEndAudit,

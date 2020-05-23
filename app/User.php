@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use App\Models\Hallazgo;
+use App\Models\Position;
 class User extends Authenticatable
 {
     use Notifiable, HasRoles;
@@ -39,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function positionUser()
+    {
+        return $this->belongsTo(Position::class, 'position_id');
+    }
 }

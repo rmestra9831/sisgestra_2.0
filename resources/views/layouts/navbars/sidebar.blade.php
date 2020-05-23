@@ -34,7 +34,7 @@
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse{{ ($activePage == 'profile' || $activePage == 'user-management') ? ' show' : '' }}" id="users">
+        <div class="collapse{{ ($activePage == 'profile' || $activePage == 'user-management' || $activePage == 'register')  ? ' show' : '' }}" id="users">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('profile.edit') }}">
@@ -42,6 +42,14 @@
                 <span class="sidebar-normal">{{ __('Mi perfil') }} </span>
               </a>
             </li>
+            @can('create user')
+              <li class="nav-item{{ $activePage == 'register' ? ' active' : '' }}">
+                <a class="nav-link"  href="{{ route('register') }}">
+                  <span class="sidebar-mini"> UM </span>
+                  <span class="sidebar-normal"> {{ __('Nuevo Usuario') }} </span>
+                </a>
+              </li>
+            @endcan
             @can('create user')
               <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('user.index') }}">
@@ -67,7 +75,7 @@
             <li class="nav-item{{ $activePage == 'Findings' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('TypeFindings') }}">
                 <span class="sidebar-mini"><i class="material-icons">insert_drive_file</i></span>
-                <span class="sidebar-normal">{{ __('Translados Diciplinarios') }} </span>
+                <span class="sidebar-normal">{{ __('Translados') }} </span>
               </a>
             </li>
           </ul>

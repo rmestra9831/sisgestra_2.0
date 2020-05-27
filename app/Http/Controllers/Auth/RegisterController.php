@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Models\Position;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -62,6 +65,23 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
+    public function register(Request $request)
+    {
+        // dd($request);
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return redirect()->route('register')->with('status','Usuario Registrado Correctamente, Recuerda Activarlo en la sesión ');
+    }
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+    protected function registered(Request $request, $user)
+    {
+
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -75,6 +95,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'position_id' => $data['position'],
+            'active' => 0,
             'password' => Hash::make($data['password']),
             'slug' => $data['name'],$data['position'],
         ]);

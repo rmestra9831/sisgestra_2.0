@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('position_id')->unsigned();
             $table->string('slug')->unique();
-            $table->boolean('active');
+            $table->boolean('active')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

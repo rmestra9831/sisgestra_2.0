@@ -65,49 +65,62 @@
                 </div>
               </div>
 
-            <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
+              <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
+                <div class="input-group">
+                  <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="material-icons">lock_outline</i>
                   </span>
+                  </div>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
-              </div>
-              @if ($errors->has('password'))
-                <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
+                @if ($errors->has('password'))
+                  <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
                   <strong>{{ $errors->first('password') }}</strong>
-                </div>
-              @endif
-            </div>
+                  </div>
+                @endif
+              </div>
 
-            <div class="bmd-form-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
+              <div class="bmd-form-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }} mt-3">
+                <div class="input-group">
+                  <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="material-icons">lock_outline</i>
                   </span>
+                  </div>
+                  <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password...') }}" required>
                 </div>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password...') }}" required>
-              </div>
-              @if ($errors->has('password_confirmation'))
-                <div id="password_confirmation-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
+                @if ($errors->has('password_confirmation'))
+                  <div id="password_confirmation-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
                   <strong>{{ $errors->first('password_confirmation') }}</strong>
-                </div>
-              @endif
-            </div>
-            <div class="form-check mr-auto ml-3 mt-3">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="policy" name="policy" {{ old('policy', 1) ? 'checked' : '' }} >
-                <span class="form-check-sign">
+                  </div>
+                @endif
+              </div>
+              <div class="form-check mr-auto ml-3 mt-3">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="policy" name="policy" {{ old('policy', 1) ? 'checked' : '' }} >
+                  <span class="form-check-sign">
                   <span class="check"></span>
-                </span>
-                {{ __('Acepto los') }} <a href="#">{{ __('Terminos y condiciones') }}</a>
-              </label>
+                  </span>
+                  {{ __('Acepto los') }} <a href="#">{{ __('Terminos y condiciones') }}</a>
+                </label>
+              </div>
             </div>
-          </div>
-          <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-info btn-link btn-lg">{{ __('Crear') }}</button>
+            <div class="card-footer justify-content-center">
+              <button type="submit" class="btn btn-info btn-link btn-lg">{{ __('Crear') }}</button>
+            </div>
+            @if (session('status'))
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                    </button>
+                    <span>{{ session('status') }} <em>" Usuarios "</em></span>
+                  </div>
+                </div>
+              </div>
+            @endif
           </div>
         </div>
       </form>

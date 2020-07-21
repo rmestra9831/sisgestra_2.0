@@ -17,7 +17,11 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
+	if (Auth::check()) {
+    return redirect('home');
+	}else{
     return view('welcome');
+	}
 });
 
 // Auth::routes();
@@ -37,6 +41,7 @@ Route::group(['middleware' => ['auth','isActive']], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	
 	Route::get('profile/{slug}', ['as' => 'profileUser.edit', 'uses' => 'ProfileController@editUser']);
+	Route::get('profile/{slug}/delete', ['as' => 'profileUser.delete', 'uses' => 'ProfileController@deleteUser']);
 	Route::put('profile/{slug}/update', ['as' => 'profileUser.update', 'uses' => 'ProfileController@updateUser']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });

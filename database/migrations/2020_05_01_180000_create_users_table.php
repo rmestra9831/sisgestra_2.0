@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('position_id')->unsigned();
             $table->string('slug')->unique();
             $table->boolean('active')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
 

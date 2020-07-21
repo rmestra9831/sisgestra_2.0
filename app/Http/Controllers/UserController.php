@@ -20,6 +20,8 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
+        $users = User::permission('view register')->get();
+        // dd($users);
         return view('users.index', ['users' => $model->paginate(15)]);
     }
 }

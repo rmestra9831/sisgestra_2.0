@@ -46,7 +46,11 @@ class ProfileController extends Controller
 
         return back()->withStatus(__('Profile successfully updated.'));
     }
-
+    public function deleteUser($slug){
+        $user = User::where('slug',$slug);
+        $user->delete();
+        return redirect()->route('user.index')->with('status','Usuario Eliminado');
+    }
     /**
      * Change the password
      *

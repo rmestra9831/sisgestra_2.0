@@ -30,5 +30,11 @@ class PermissionsSeeder extends Seeder
     
         $user = User::where('id',2)->first();
         $user->givePermissionTo(['create register','view register']);
+    
+        $user = User::where('id',3)->first();
+        $user->givePermissionTo(['create register','view register']);
+    
+        $user = User::where('id',4)->first();
+        $user->givePermissionTo(['create register','view register']);
     }
 }

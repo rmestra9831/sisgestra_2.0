@@ -17,6 +17,20 @@
                   <a href="{{ route('register') }}" class="btn btn-sm btn-info">Nuevo Usuario</a>
                 </div>
               </div>
+
+              @if (session('status'))
+                <div class="row animated fadeInDown">
+                  <div class="col-sm-12">
+                    <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons  ">close</i>
+                      </button>
+                      <span>{{ session('status') }}</span>
+                    </div>
+                  </div>
+                </div>
+              @endif
+
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-info">
@@ -49,9 +63,9 @@
                             <i class="material-icons">edit</i>
                         </a>
                         @can('delete user')
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                          <a href="{{ route('profileUser.delete',$user->slug) }}"  rel="tooltip" class="btn btn-danger btn-round">
                             <i class="material-icons">close</i>
-                          </button>
+                          </a>
                         @endcan
                         </td>
                       </tr>

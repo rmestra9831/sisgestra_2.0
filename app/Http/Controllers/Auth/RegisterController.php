@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\User;
 use App\Models\Position;
 use Illuminate\Support\Facades\Auth;
@@ -87,17 +89,27 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+    //  * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $userCreate = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'position_id' => $data['position'],
             'active' => 0,
             'password' => Hash::make($data['password']),
-            'slug' => $data['name'],$data['position'],
+            'slug' => $data['name'].'_'.substr(str_shuffle($permitted_chars), 0, 4),
+            'email_verified_at' => now(),
         ]);
+        $user = User::where('id',$userCreate->id)->first();
+        if ($user->position_id == 2) {
+            $user->givePermissionTo(['create register','view register']);
+            // return $user;
+        }else{
+            $user->givePermissionTo(['create register','edit register','delete register','create user','delete user','view register']);
+        }
+        // return $user;
     }
 }
